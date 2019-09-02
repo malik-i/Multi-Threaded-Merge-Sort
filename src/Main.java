@@ -19,16 +19,20 @@ public class Main {
 
         for(int i = 0; i < sortThis.length; i++){
             if(i < midpoint){
-                sortedLeft[i] =  sortThis[i];
+                sortedLeft[i] =  sortThis[i]; // storing the values into the left half, ready to be sorted
 //                i++;
             }
         }
 
         for(int j = 0; j < sortThis.length; j++){
             if(j < sortedRight.length){
-                sortedRight[j] = sortThis[j+midpoint];
+                sortedRight[j] = sortThis[j+midpoint]; // storing the values into the right half, read to be sorted
             }
         }
+
+
+        // Using this to print all the values in both the right and left arrays
+
         for(int n : sortedLeft){
             System.out.println("Sorted Left: " + n);
         }
