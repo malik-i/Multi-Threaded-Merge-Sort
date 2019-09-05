@@ -11,6 +11,10 @@ public class Main {
 
         sortedLeft = new int[midpoint]; // the left array will always be half of the length of orig
 
+        if(sortThis.length <= 1) {
+            return sortThis;
+        }
+
         if(sortThis.length % 2 == 0) { // if the length of orig is even then...
             sortedRight = new int[midpoint]; // ... set the right as size of the midpoint
         } else { // if not ...
@@ -30,16 +34,35 @@ public class Main {
             }
         }
 
+        int [] result = new int[sortThis.length]; // the resulting array
 
-        // Using this to print all the values in both the right and left arrays
+        sortedLeft = mergeSort(sortedLeft); // this is where the recursion occurs
+        sortedRight = mergeSort(sortedRight);
 
-        for(int n : sortedLeft){
-            System.out.println("Sorted Left: " + n);
-        }
 
-        for(int n : sortedRight){
-            System.out.println("Sorted Right: " + n);
-        }
-        return sortThis;
-    }
+
+//        // Using this to print all the values in both the right and left arrays
+//
+//        for(int n : sortedLeft){
+//            System.out.println("Sorted Left: " + n);
+//        }
+//
+//        for(int n : sortedRight){
+//            System.out.println("Sorted Right: " + n);
+//        }
+//        return sortThis;
+
+        result = merge(sortedLeft, sortedRight);
+
+        return result; /// this is NOT correct, just put it in there for git commit
+   }
+
+   private static int[] merge(int[] sortedLeft, int[] sortedRight){
+        int[] resultingArray = new int[sortedLeft.length + sortedRight.length];
+
+        int leftPtr, rightPtr, resultPtr;
+        leftPtr = 0; rightPtr = 0; resultPtr = 0;
+
+        return resultingArray;
+   }
 }
