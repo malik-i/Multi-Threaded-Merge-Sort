@@ -2,7 +2,16 @@ public class Main {
 
     public static void main(String[] args) {
         int[] sortThis = {2,8,5,3,9,4,1,7};
+        System.out.println("Array: ");
+        printArray(sortThis);
+        sortThis = mergeSort(sortThis);
+
+        System.out.println("\n");
+
+        System.out.println("Now Sorted: ");
+        printArray(sortThis);
         mergeSort(sortThis);
+
     }
 
     public static int[] mergeSort(int[] sortThis){
@@ -39,19 +48,6 @@ public class Main {
         sortedLeft = mergeSort(sortedLeft); // this is where the recursion occurs
         sortedRight = mergeSort(sortedRight);
 
-
-
-//        // Using this to print all the values in both the right and left arrays
-//
-//        for(int n : sortedLeft){
-//            System.out.println("Sorted Left: " + n);
-//        }
-//
-//        for(int n : sortedRight){
-//            System.out.println("Sorted Right: " + n);
-//        }
-//        return sortThis;
-
         result = merge(sortedLeft, sortedRight);
 
         return result; /// this is NOT correct, just put it in there for git commit
@@ -60,9 +56,33 @@ public class Main {
    private static int[] merge(int[] sortedLeft, int[] sortedRight){
         int[] resultingArray = new int[sortedLeft.length + sortedRight.length];
 
-        int leftPtr, rightPtr, resultPtr;
+        int leftPtr, rightPtr, resultPtr; // integger values tht will be used as pointers to each array
         leftPtr = 0; rightPtr = 0; resultPtr = 0;
 
+        while(leftPtr < sortedLeft.length || rightPtr < sortedRight.length) { // insures that merge is possible
+            if(leftPtr < sortedLeft.length && rightPtr < sortedRight.length){
+                if(sortedLeft[leftPtr] < sortedRight[rightPtr]){
+                    resultingArray[resultPtr++] = sortedLeft[leftPtr++];
+                } else {
+                    resultingArray[resultPtr++] = sortedRight[rightPtr++];
+                }
+            }
+
+            else if(leftPtr < sortedLeft.length){
+                resultingArray[resultPtr++] = sortedLeft[leftPtr++];
+            }
+
+            else if(rightPtr < sortedRight.length){
+                resultingArray[resultPtr++] = sortedRight[rightPtr++];
+            }
+        }
         return resultingArray;
+   }
+
+   private static void printArray(int[] array){
+       for (int i :
+            array) {
+           System.out.print(i + " ");
+       }
    }
 }
