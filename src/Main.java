@@ -61,7 +61,7 @@ public class Main {
 
         while(leftPtr < sortedLeft.length || rightPtr < sortedRight.length) { // insures that merge is possible
             if(leftPtr < sortedLeft.length && rightPtr < sortedRight.length){
-                if(sortedLeft[leftPtr] < sortedRight[rightPtr]){
+                if(sortedLeft[leftPtr] < sortedRight[rightPtr]){ // sorting and storing
                     resultingArray[resultPtr++] = sortedLeft[leftPtr++];
                 } else {
                     resultingArray[resultPtr++] = sortedRight[rightPtr++];
